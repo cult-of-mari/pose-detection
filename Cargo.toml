@@ -1,0 +1,22 @@
+[package]
+name = "pose-detection"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+anyhow = { version = "1.0.79", default-features = false, features = ["std"] }
+candle-core = { version = "0.3.2", default-features = false }
+candle-nn = { version = "0.3.2", default-features = false }
+candle-transformers = { version = "0.3.2", default-features = false }
+hf-hub = { version = "0.3.2", default-features = false, features = ["online", "tokio"] }
+image = { version = "0.24.8", default-features = false, features = ["png"] }
+imageproc = { version = "0.23.0", default-features = false }
+rusttype = { version = "0.9.3", default-features = false }
+sctk = { version = "0.18.0", package = "smithay-client-toolkit", default-features = false, features = ["xkbcommon"] }
+tracing = { version = "0.1.40", default-features = false, features = ["std"] }
+tracing-subscriber = { version = "0.3.18", default-features = false, features = ["ansi", "env-filter", "time"] }
+wayland-client = { version = "0.31.1", default-features = false }
+
+[features]
+default = ["cuda"]
+cuda = ["candle-core/cuda", "candle-nn/cuda", "candle-transformers/cuda"]
